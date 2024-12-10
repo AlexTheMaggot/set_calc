@@ -1,3 +1,4 @@
 /.idea/
 /set_calc/db.sqlite3
 /set_calc/set_calc/config.py
+/set_calc/mainapp/node_modules/
