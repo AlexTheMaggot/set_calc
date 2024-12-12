@@ -3,17 +3,10 @@ import {createRoot} from "react-dom/client";
 import './App.css'
 
 
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className="app">
-            </div>
-        );
-    }
+export default function App(props) {
+    return (
+        <div className="app"></div>
+    )
 }
 
 
