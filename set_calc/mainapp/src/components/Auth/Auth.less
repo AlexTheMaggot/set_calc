@@ -36,6 +36,8 @@
   &__form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
   }
 
@@ -71,11 +73,24 @@
   }
   &__label-img {
     border: 1px solid @gray;
-    height: 30px;
+    height: 20px;
   }
   &__label-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin: 0;
+  }
+  &__submit {
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    background: @blue;
+    border: none;
+    border-radius: 5px;
+    color: @white;
+    margin: 10px 0;
+    transition: all 0.3s;
+    &:hover {
+      background: @blue-dark;
+    }
   }
 }
 
@@ -109,6 +124,9 @@
     }
     &__radio-wrap {
       flex-direction: column;
+    }
+    &__input {
+      width: 100%;
     }
   }
 }
