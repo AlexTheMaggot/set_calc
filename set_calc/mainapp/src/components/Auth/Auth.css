@@ -32,6 +32,8 @@
 .auth__form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 .auth__input {
@@ -63,11 +65,24 @@
 }
 .auth__label-img {
   border: 1px solid #808080;
-  height: 30px;
+  height: 20px;
 }
 .auth__label-text {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   margin: 0;
+}
+.auth__submit {
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  background: #244183;
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  margin: 10px 0;
+  transition: all 0.3s;
+}
+.auth__submit:hover {
+  background: #0C2255;
 }
 @media screen and (max-width: 720px) {
   .auth__wrap {
@@ -96,6 +111,9 @@
   }
   .auth__radio-wrap {
     flex-direction: column;
+  }
+  .auth__input {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=Auth.css.map */
