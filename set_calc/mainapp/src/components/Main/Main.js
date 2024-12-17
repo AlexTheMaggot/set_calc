@@ -9,6 +9,7 @@ import api_sender from "../api_sender";
 
 export default function Main(props) {
     let [navigate, set_navigate] = useState('')
+    let [main_show, set_main_show] = useState(true)
     let auth_checker = () => {
         let response = api_sender('AuthCheck', 1)
         response.then((data) => {
@@ -17,15 +18,27 @@ export default function Main(props) {
             }
         })
     }
+    let navi = (e, level) => {
+        e.preventDefault()
+        set_main_show(false)
+        setTimeout(() => {
+            set_navigate(level)
+        }, 300);
+        setTimeout(() => {
+            set_main_show(true)
+        }, 600);
+    }
     useEffect(() => {
         auth_checker()
+        set_navigate('')
+        
     })
     return (
-            <div className="main">
+            <div className={main_show ? 'main' : 'main main_hidden'}>
                 {navigate === 'auth' && <Navigate to="/auth/" />}
-                {navigate === 'home_ru' && <Navigate to="/auth/" />}
-                {navigate === 'home_uz' && <Navigate to="/auth/" />}
-                {props.level === 'auth' && <Auth />}
+                {navigate === 'home_ru' && <Navigate to="/ru/" />}
+                {navigate === 'home_uz' && <Navigate to="/uz/" />}
+                {props.level === 'auth' && <Auth navi={navi} />}
                 {props.level === 'home_ru' && <HomeRu />}
                 {props.level === 'home_uz' && <HomeUz />}
             </div>
