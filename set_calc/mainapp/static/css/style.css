@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: sans-serif;
   color: #333333;
+  background: #333333;
 }
 .preloader {
   width: 100%;
