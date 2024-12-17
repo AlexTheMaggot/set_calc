@@ -66,6 +66,10 @@
     border: 2px solid @transparent;
     padding: 5px;
     border-radius: 5px;
+    transition: transfrom 0.1s;
+    &:active {
+      transform: scale(0.95);
+    }
     &_checked {
       border: 2px solid @blue;
     }
@@ -86,9 +90,12 @@
     border-radius: 5px;
     color: @white;
     margin: 10px 0;
-    transition: all 0.3s;
+    transition: transform 0.1s, background 0.3s;
     &:hover {
       background: @blue-dark;
+    }
+    &:active {
+      transform: scale(0.95);
     }
   }
 }
