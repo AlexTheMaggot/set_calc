@@ -42,3 +42,7 @@ def auth(request, request_data):
         return make_success(request_data['id'], True)
     else:
         return make_error(request_data['id'], 1001)
+
+
+def lang_check(request, request_data):
+    return make_success(request_data['id'], request.user.userprofile.lang)
