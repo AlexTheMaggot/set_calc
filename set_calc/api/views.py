@@ -6,6 +6,7 @@ from .api_methods import *
 
 methods = {
     'AuthCheck': auth_check,
+    'Auth': auth,
 }
 
 
