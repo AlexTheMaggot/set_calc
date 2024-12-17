@@ -10,13 +10,31 @@ import api_sender from "../api_sender";
 export default function Main(props) {
     let [navigate, set_navigate] = useState('')
     let [main_show, set_main_show] = useState(true)
+    let [auth, set_auth] = useState(false)
     let auth_checker = () => {
-        let response = api_sender('AuthCheck', 1)
-        response.then((data) => {
-            if (data.result === false) {
-                set_navigate('auth')
-            }
-        })
+        if (auth === false) {
+            let response = api_sender('AuthCheck', 1)
+            response.then((data) => {
+                if (data.result === false && location.pathname !== '/auth/') {
+                    set_navigate('auth')
+                }
+                else {
+                    set_auth(true)
+                    if (location.pathname === '/') {
+                        let r = api_sender('LangCheck', 1);
+                        r.then((data) => {
+                            console.log(data.result === 'ru')
+                            if (data.result === 'ru') {
+                                set_navigate('home_ru')
+                            }
+                            else if (data.result === 'uz') {
+                                set_navigate('home_uz')
+                            }
+                        })
+                    }
+                }
+            })
+        }
     }
     let navi = (e, level) => {
         e.preventDefault()
@@ -31,18 +49,6 @@ export default function Main(props) {
     useEffect(() => {
         auth_checker()
         set_navigate('')
-        if (location.pathname === '/') {
-            let r = api_sender('LangCheck', 1);
-            r.then((data) => {
-                console.log(data.result === 'ru')
-                if (data.result === 'ru') {
-                    set_navigate('home_ru')
-                }
-                else if (data.result === 'uz') {
-                    set_navigate('home_uz')
-                }
-            })
-        }
     })
     return (
             <div className={main_show ? 'main' : 'main main_hidden'}>
