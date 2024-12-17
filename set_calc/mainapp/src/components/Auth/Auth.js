@@ -9,10 +9,18 @@ export default function Auth(props) {
 
     let form_sender = (e) => {
         e.preventDefault()
-        api_sender('Auth', 1, {
+        let r = api_sender('Auth', 1, {
             login: login,
             password: password,
             lang: lang
+        })
+        r.then((data) => {
+            if ('error' in data) {
+                console.log('Fail')
+            }
+            else {
+                props.navi(e, 'home_' + lang)
+            }
         })
     }
 
