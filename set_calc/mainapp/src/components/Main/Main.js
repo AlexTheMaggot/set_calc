@@ -31,7 +31,18 @@ export default function Main(props) {
     useEffect(() => {
         auth_checker()
         set_navigate('')
-        
+        if (location.pathname === '/') {
+            let r = api_sender('LangCheck', 1);
+            r.then((data) => {
+                console.log(data.result === 'ru')
+                if (data.result === 'ru') {
+                    set_navigate('home_ru')
+                }
+                else if (data.result === 'uz') {
+                    set_navigate('home_uz')
+                }
+            })
+        }
     })
     return (
             <div className={main_show ? 'main' : 'main main_hidden'}>
