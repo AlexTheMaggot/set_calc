@@ -6,6 +6,7 @@ export default function Auth(props) {
     const [lang, set_lang] = useState('ru')
     const [login, set_login] = useState('')
     const [password, set_password] = useState('')
+    const [login_wrong, set_login_wrong] = useState(false)
 
     let form_sender = (e) => {
         e.preventDefault()
@@ -16,7 +17,10 @@ export default function Auth(props) {
         })
         r.then((data) => {
             if ('error' in data) {
-                console.log('Fail')
+                set_login_wrong(true)
+                setTimeout(() => {
+                    set_login_wrong(false)
+                }, 1000)
             }
             else {
                 props.navi(e, 'home_' + lang)
@@ -48,8 +52,9 @@ export default function Auth(props) {
                 </div>
                 <div className="auth__form-wrap">
                     <form onSubmit={(e) => {form_sender(e)}} action="" className="auth__form">
-                        <input onChange={(e) => {set_login(e.target.value)}} type="text" className="auth__input" placeholder="Логин"/>
-                        <input onChange={(e) => {set_password(e.target.value)}} type="password" className="auth__input" placeholder="Пароль"/>
+                        <input onChange={(e) => {set_login(e.target.value)}} type="text" className={login_wrong ? "auth__input auth__input_wrong" : "auth__input" } placeholder="Логин"/>
+                        <input onChange={(e) => {set_password(e.target.value)}} type="password" className={login_wrong ? "auth__input auth__input_wrong" : "auth__input" } placeholder="Пароль"/>
+                        <p className={login_wrong ? "auth__wrong" : "auth__wrong auth__wrong_hidden" }>Неправильный логин или пароль</p>
                         <input className="auth__submit" type="submit" value="Войти"/>
                         <div className="auth__radio-wrap">
                             <label onClick={() => {lang_handler('ru')}} id="auth_lang_ru" htmlFor="auth-radio-ru" className="auth__label auth__label_checked">
