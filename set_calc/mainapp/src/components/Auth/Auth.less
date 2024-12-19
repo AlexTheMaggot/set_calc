@@ -46,6 +46,18 @@
     background: @white;
     border: 2px solid @blue;
     border-radius: 5px;
+    &_wrong {
+      border: 2px solid @red;
+      animation: input__wrong 0.1s 3 linear;
+    }
+  }
+
+  &__wrong {
+    margin: 0;
+    color: @red;
+    &_hidden {
+      opacity: 0;
+    }
   }
 
   &__radio-wrap {
@@ -135,4 +147,17 @@
       width: 100%;
     }
   }
+}
+
+@keyframes input__wrong {
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(10px, 0);
+  }
+  100% {
+    transform: translate(0);
+  }
+  
 }
