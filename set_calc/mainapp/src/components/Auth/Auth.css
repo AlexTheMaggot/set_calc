@@ -42,6 +42,17 @@
   border: 2px solid #244183;
   border-radius: 5px;
 }
+.auth__input_wrong {
+  border: 2px solid #C42525;
+  animation: input__wrong 0.1s 3 linear;
+}
+.auth__wrong {
+  margin: 0;
+  color: #C42525;
+}
+.auth__wrong_hidden {
+  opacity: 0;
+}
 .auth__radio-wrap {
   display: flex;
   gap: 20px;
@@ -120,6 +131,17 @@
   }
   .auth__input {
     width: 100%;
+  }
+}
+@keyframes input__wrong {
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(10px, 0);
+  }
+  100% {
+    transform: translate(0);
   }
 }
 /*# sourceMappingURL=Auth.css.map */

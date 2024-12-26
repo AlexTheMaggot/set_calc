@@ -36,4 +36,9 @@ body {
     transform: scale(1);
   }
 }
+@media screen and (max-width: 720px) {
+  .preloader__img {
+    width: 90vw;
+  }
+}
 /*# sourceMappingURL=style.css.map */
