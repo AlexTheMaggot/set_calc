@@ -2,8 +2,12 @@ import React, {Component, useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 import "./Main.css"
 import Auth from "../Auth/Auth";
-import HomeRu from "../Home/HomeRu";
-import HomeUz from "../Home/HomeUz";
+import CalculationListRu from "../CalculationList/CalculationListRu";
+import CalculationListUz from "../CalculationList/CalculationListUz";
+import CoefficientListRu from "../CoefficientList/CoefficientListRu";
+import CoefficientListUz from "../CoefficientList/CoefficientListUz";
+import HandbookListRu from "../HandbookList/HandbookListRu";
+import HandbookListUz from "../HandbookList/HandbookListUz";
 import api_sender from "../api_sender";
 
 
@@ -23,7 +27,6 @@ export default function Main(props) {
                     if (location.pathname === '/') {
                         let r = api_sender('LangCheck', 1);
                         r.then((data) => {
-                            console.log(data.result === 'ru')
                             if (data.result === 'ru') {
                                 set_navigate('home_ru')
                             }
@@ -53,11 +56,19 @@ export default function Main(props) {
     return (
             <div className={main_show ? 'main' : 'main main_hidden'}>
                 {navigate === 'auth' && <Navigate to="/auth/" />}
-                {navigate === 'home_ru' && <Navigate to="/ru/" />}
-                {navigate === 'home_uz' && <Navigate to="/uz/" />}
+                {navigate === 'calculation_list_ru' && <Navigate to="/ru/calculations/" />}
+                {navigate === 'calculation_list_uz' && <Navigate to="/uz/calculations/" />}
+                {navigate === 'coefficient_list_ru' && <Navigate to="/ru/coefficients/" />}
+                {navigate === 'coefficient_list_uz' && <Navigate to="/uz/coefficients/" />}
+                {navigate === 'handbook_list_ru' && <Navigate to="/ru/handbooks/" />}
+                {navigate === 'handbook_list_uz' && <Navigate to="/uz/handbooks/" />}
                 {props.level === 'auth' && <Auth navi={navi} />}
-                {props.level === 'home_ru' && <HomeRu />}
-                {props.level === 'home_uz' && <HomeUz />}
+                {props.level === 'calculation_list_ru' && <CalculationListRu />}
+                {props.level === 'calculation_list_uz' && <CalculationListUz />}
+                {props.level === 'coefficient_list_ru' && <CoefficientListRu />}
+                {props.level === 'coefficient_list_uz' && <CoefficientListUz />}
+                {props.level === 'handbook_list_ru' && <HandbookListRu />}
+                {props.level === 'handbook_list_uz' && <HandbookListUz />}
             </div>
         );
 }
