@@ -1,6 +1,7 @@
 from typing import Any
 from django.http import JsonResponse
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout as logout_view
 from django.contrib.auth.models import User
 
 
@@ -46,3 +47,15 @@ def auth(request, request_data):
 
 def lang_check(request, request_data):
     return make_success(request_data['id'], request.user.userprofile.lang)
+
+
+def logout(request, request_data):
+    logout_view(request)
+    return make_success(request_data['id'])
+
+
+def lang_change(request, request_data):
+    user = request.user
+    user.userprofile.lang = request_data['params']['lang']
+    user.userprofile.save()
+    return make_success(request_data['id'])
