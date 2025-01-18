@@ -9,12 +9,9 @@ export default function App(props) {
             <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
                 <Routes>
                     <Route exact path="/" element={<Main level="home"/>}></Route>
-                    <Route exact path="/ru/calculations/" element={<Main level="calculation_list_ru"/>}></Route>
-                    <Route exact path="/ru/coefficients/" element={<Main level="coefficient_list_ru"/>}></Route>
-                    <Route exact path="/ru/handbooks/" element={<Main level="handbook_list_ru"/>}></Route>
-                    <Route exact path="/uz/calculations/" element={<Main level="calculation_list_uz"/>}></Route>
-                    <Route exact path="/uz/coefficients/" element={<Main level="coefficient_list_uz"/>}></Route>
-                    <Route exact path="/uz/handbooks/" element={<Main level="handbook_list_uz"/>}></Route>
+                    <Route exact path="/calculations/" element={<Main level="calculation_list"/>}></Route>
+                    <Route exact path="/coefficients/" element={<Main level="coefficient_list"/>}></Route>
+                    <Route exact path="/handbooks/" element={<Main level="handbook_list"/>}></Route>
                     <Route exact path="/auth/" element={<Main level="auth"/>}></Route>
                 </Routes>
             </BrowserRouter>
