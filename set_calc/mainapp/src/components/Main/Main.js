@@ -2,31 +2,25 @@ import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 import "./Main.css";
 import Auth from "../Auth/Auth";
-import CalculationListRu from "../CalculationList/CalculationListRu";
-import CalculationListUz from "../CalculationList/CalculationListUz";
-import CoefficientListRu from "../CoefficientList/CoefficientListRu";
-import CoefficientListUz from "../CoefficientList/CoefficientListUz";
-import HandbookListRu from "../HandbookList/HandbookListRu";
-import HandbookListUz from "../HandbookList/HandbookListUz";
-import HeaderRu from "../Header/HeaderRu";
-import HeaderUz from "../Header/HeaderUz";
+import CalculationList from "../CalculationList/CalculationList";
+import CoefficientList from "../CoefficientList/CoefficientList";
+import HandbookList from "../HandbookList/HandbookList";
+import Header from "../Header/Header";
+import Sidebar from "../Sidebar/Sidebar";
 import api_sender from "../api_sender";
 
 
 export default function Main(props) {
-    let [lang, set_lang] = useState("");
+    let [lang, set_lang] = useState("ru");
     let [navigate, set_navigate] = useState("");
     let [main_show, set_main_show] = useState(true);
     let [auth, set_auth] = useState(false);
     let [sidebar_show, set_sidebar_show] = useState(false);
     let [header_show, set_header_show] = useState(false);
     let header_levels = [
-        "calculation_list_ru",
-        "calculation_list_uz",
-        "coefficient_list_ru",
-        "coefficient_list_uz",
-        "handbook_list_ru",
-        "handbook_list_uz"
+        "calculation_list",
+        "coefficient_list",
+        "handbook_list",
     ];
     let auth_checker = () => {
         if (auth === false) {
@@ -37,14 +31,16 @@ export default function Main(props) {
                 }
                 else {
                     set_auth(true)
-                    let r = api_sender('LangCheck', 1)
+                    let r = api_sender("LangCheck", 1)
                     r.then(data => {
                         set_lang(data.result)
+                        if ( props.level.slice(-2) !== data.result ) {
+                            set_navigate(props.level.slice(0, -2) + data.result)
+                        }
                         if (location.pathname === "/") {
-                            set_navigate("calculation_list_" + data.result);
+                            set_navigate("calculation_list");
                         }
                     })
-
                 }
             })
         }
@@ -74,28 +70,23 @@ export default function Main(props) {
     return (
             <div className={main_show ? "main" : "main main_hidden"}>
                 <div className={sidebar_show ? "main__sidebar" : "main__sidebar main__sidebar_none"}>
-                    {lang === "ru" ? <HeaderRu /> : <HeaderUz />}
+                    {lang === "ru" ? <SidebarRu /> : <SidebarUz />}
                 </div>
                 <div className="main__header-content">
-                    <div className={header_show ? "main__header" : "main__header main__header_none"}></div>
+                    <div className={header_show ? "main__header" : "main__header main__header_none"}>
+                        <Header navi={navi} lang={lang} />
+                    </div>
                     <div className="main__content">
                         {navigate === "auth" && <Navigate to="/auth/" />}
-                        {navigate === "calculation_list_ru" && <Navigate to="/ru/calculations/" />}
-                        {navigate === "calculation_list_uz" && <Navigate to="/uz/calculations/" />}
-                        {navigate === "coefficient_list_ru" && <Navigate to="/ru/coefficients/" />}
-                        {navigate === "coefficient_list_uz" && <Navigate to="/uz/coefficients/" />}
-                        {navigate === "handbook_list_ru" && <Navigate to="/ru/handbooks/" />}
-                        {navigate === "handbook_list_uz" && <Navigate to="/uz/handbooks/" />}
-                        {props.level === "auth" && <Auth navi={navi} />}
-                        {props.level === "calculation_list_ru" && <CalculationListRu />}
-                        {props.level === "calculation_list_uz" && <CalculationListUz />}
-                        {props.level === "coefficient_list_ru" && <CoefficientListRu />}
-                        {props.level === "coefficient_list_uz" && <CoefficientListUz />}
-                        {props.level === "handbook_list_ru" && <HandbookListRu />}
-                        {props.level === "handbook_list_uz" && <HandbookListUz />}
+                        {navigate === "calculation_list" && <Navigate to="/calculations/" />}
+                        {navigate === "coefficient_list" && <Navigate to="/coefficients/" />}
+                        {navigate === "handbook_list" && <Navigate to="/handbooks/" />}
+                        {props.level === "auth" && <Auth navi={navi} set_main_lang={set_lang} />}
+                        {props.level === "calculation_list" && <CalculationList />}
+                        {props.level === "coefficient_list" && <CoefficientList />}
+                        {props.level === "handbook_list" && <HandbookList />}
                     </div>
                 </div>
-
             </div>
         );
 }
