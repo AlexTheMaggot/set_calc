@@ -26,8 +26,10 @@ export default function Main(props) {
         if (auth === false) {
             let response = api_sender("AuthCheck", 1)
             response.then((data) => {
-                if (data.result === false && location.pathname !== "/auth/") {
-                    set_navigate("auth")
+                if (data.result === false) {
+                    if (location.pathname !== "/auth/") {
+                        set_navigate("auth")
+                    }
                 }
                 else {
                     set_auth(true)
@@ -70,21 +72,21 @@ export default function Main(props) {
     return (
             <div className={main_show ? "main" : "main main_hidden"}>
                 <div className={sidebar_show ? "main__sidebar" : "main__sidebar main__sidebar_none"}>
-                    {lang === "ru" ? <SidebarRu /> : <SidebarUz />}
+                    <Sidebar lang={lang} />
                 </div>
                 <div className="main__header-content">
                     <div className={header_show ? "main__header" : "main__header main__header_none"}>
-                        <Header navi={navi} lang={lang} />
+                        <Header navi={navi} lang={lang} set_lang={set_lang} />
                     </div>
                     <div className="main__content">
                         {navigate === "auth" && <Navigate to="/auth/" />}
                         {navigate === "calculation_list" && <Navigate to="/calculations/" />}
                         {navigate === "coefficient_list" && <Navigate to="/coefficients/" />}
                         {navigate === "handbook_list" && <Navigate to="/handbooks/" />}
-                        {props.level === "auth" && <Auth navi={navi} set_main_lang={set_lang} />}
-                        {props.level === "calculation_list" && <CalculationList />}
-                        {props.level === "coefficient_list" && <CoefficientList />}
-                        {props.level === "handbook_list" && <HandbookList />}
+                        {props.level === "auth" && <Auth navi={navi} lang={lang} set_lang={set_lang} />}
+                        {props.level === "calculation_list" && <CalculationList lang={lang} />}
+                        {props.level === "coefficient_list" && <CoefficientList lang={lang} />}
+                        {props.level === "handbook_list" && <HandbookList lang={lang} />}
                     </div>
                 </div>
             </div>
