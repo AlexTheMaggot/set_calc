@@ -8,6 +8,7 @@ methods = {
     'AuthCheck': auth_check,
     'Auth': auth,
     'LangCheck': lang_check,
+    'Logout': logout,
 }
 
 
