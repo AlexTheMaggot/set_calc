@@ -16,12 +16,15 @@ export default function Sidebar(props) {
         <div className="sidebar">
             <ul className="sidebar__ul">
                 <li className="sidebar__li">
+                    <img src="/static/img/calculation.svg" alt="" className="sidebar__link-icon"/>
                     <a href="#" onClick={(e) => {props.navi(e, 'calculation_list')}} className="sidebar__link">{text_content["calculations_" + props.lang]}</a>
                 </li>
                 <li className="sidebar__li">
+                    <img src="/static/img/coefficient.svg" alt="" className="sidebar__link-icon"/>
                     <a href="#" onClick={(e) => {props.navi(e, 'coefficient_list')}} className="sidebar__link">{text_content["coefficients_" + props.lang]}</a>
                 </li>
                 <li className="sidebar__li">
+                    <img src="/static/img/handbook.svg" alt="" className="sidebar__link-icon"/>
                     <a href="#" onClick={(e) => {props.navi(e, 'handbook_list')}} className="sidebar__link">{text_content["handbooks_" + props.lang]}</a>
                 </li>
             </ul>
