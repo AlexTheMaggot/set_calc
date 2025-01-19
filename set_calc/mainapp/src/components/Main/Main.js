@@ -72,7 +72,7 @@ export default function Main(props) {
     return (
             <div className={main_show ? "main" : "main main_hidden"}>
                 <div className={sidebar_show ? "main__sidebar" : "main__sidebar main__sidebar_none"}>
-                    <Sidebar lang={lang} />
+                    <Sidebar lang={lang} navi={navi} />
                 </div>
                 <div className="main__header-content">
                     <div className={header_show ? "main__header" : "main__header main__header_none"}>
