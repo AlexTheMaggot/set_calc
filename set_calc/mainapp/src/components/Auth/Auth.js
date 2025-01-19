@@ -32,7 +32,8 @@ export default function Auth(props) {
                 }, 1000)
             }
             else {
-                props.navi(e, "calculation_list_" + lang)
+                props.navi(e, "calculation_list")
+                props.set_main_lang(lang)
             }
         })
     }
