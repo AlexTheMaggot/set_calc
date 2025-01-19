@@ -14,6 +14,7 @@ export default function Main(props) {
     let [lang, set_lang] = useState("ru");
     let [navigate, set_navigate] = useState("");
     let [main_show, set_main_show] = useState(true);
+    let [main_content_show, set_main_content_show] = useState(true);
     let [auth, set_auth] = useState(false);
     let [sidebar_show, set_sidebar_show] = useState(false);
     let [header_show, set_header_show] = useState(false);
@@ -57,6 +58,16 @@ export default function Main(props) {
             set_main_show(true);
         }, 600);
     }
+    let navi_content = (e, level) => {
+        e.preventDefault();
+        set_main_content_show(false);
+        setTimeout(() => {
+            set_navigate(level);
+        }, 300);
+        setTimeout(() => {
+            set_main_content_show(true);
+        }, 600);
+    }
     useEffect(() => {
         auth_checker();
         if (header_levels.includes(props.level)) {
@@ -72,13 +83,13 @@ export default function Main(props) {
     return (
             <div className={main_show ? "main" : "main main_hidden"}>
                 <div className={sidebar_show ? "main__sidebar" : "main__sidebar main__sidebar_none"}>
-                    <Sidebar lang={lang} navi={navi} />
+                    <Sidebar lang={lang} navi={navi_content} />
                 </div>
                 <div className="main__header-content">
                     <div className={header_show ? "main__header" : "main__header main__header_none"}>
                         <Header navi={navi} lang={lang} set_lang={set_lang} />
                     </div>
-                    <div className="main__content">
+                    <div className={main_content_show ? "main__content" : "main__content main__content_hidden"}>
                         {navigate === "auth" && <Navigate to="/auth/" />}
                         {navigate === "calculation_list" && <Navigate to="/calculations/" />}
                         {navigate === "coefficient_list" && <Navigate to="/coefficients/" />}
