@@ -46,10 +46,10 @@ export default function Auth(props) {
                 </div>
                 <div className="auth__form-wrap">
                     <form onSubmit={(e) => {form_sender(e)}} action="" className="auth__form">
-                        <input onChange={(e) => {set_login(e.target.value)}} type="text" className={login_wrong ? "auth__input auth__input_wrong" : "auth__input" } placeholder={props.lang === "ru" ? text_content.login_ru : text_content.login_uz}/>
-                        <input onChange={(e) => {set_password(e.target.value)}} type="password" className={login_wrong ? "auth__input auth__input_wrong" : "auth__input" } placeholder={props.lang === "ru" ? text_content.password_ru : text_content.password_uz}/>
-                        <p className={login_wrong ? "auth__wrong" : "auth__wrong auth__wrong_hidden" }>{props.lang === "ru" ? text_content.wrong_login_ru : text_content.wrong_login_uz}</p>
-                        <input className="auth__submit" type="submit" value={props.lang === "ru" ? text_content.enter_ru : text_content.enter_uz}/>
+                        <input onChange={(e) => {set_login(e.target.value)}} type="text" className={login_wrong ? "auth__input auth__input_wrong" : "auth__input" } placeholder={text_content["login_" + props.lang]}/>
+                        <input onChange={(e) => {set_password(e.target.value)}} type="password" className={login_wrong ? "auth__input auth__input_wrong" : "auth__input" } placeholder={text_content["password_" + props.lang]}/>
+                        <p className={login_wrong ? "auth__wrong" : "auth__wrong auth__wrong_hidden" }>{text_content["wrong_login_" + props.lang]}</p>
+                        <input className="auth__submit" type="submit" value={text_content["enter_" + props.lang]}/>
                         <div className="auth__radio-wrap">
                             <label onClick={() => {props.set_lang("ru")}} id="auth_lang_ru" htmlFor="auth-radio-ru" className={props.lang === "ru" ? "auth__label auth__label_checked" : "auth__label"}>
                                 <img src="/static/img/RUS.svg" alt="" className="auth__label-img"/>
