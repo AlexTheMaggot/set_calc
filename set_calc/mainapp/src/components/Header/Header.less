@@ -1,0 +1,23 @@
+@import "../../../static/css/colors";
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+
+  &__exit {
+    font-size: 1rem;
+    padding: 7px 20px;
+    background: @red;
+    border: none;
+    color: @white;
+    border-radius: 3px;
+    transition: transform 0.1s, background 0.3s;
+    &:hover {
+      background: @red-dark;
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
