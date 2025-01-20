@@ -59,3 +59,11 @@ def lang_change(request, request_data):
     user.userprofile.lang = request_data['params']['lang']
     user.userprofile.save()
     return make_success(request_data['id'])
+
+
+def profile_get(request, request_data):
+    user = request.user
+    data = {
+        'username': user.username
+    }
+    return make_success(request_data['id'], data)
