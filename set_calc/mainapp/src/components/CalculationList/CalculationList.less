@@ -1,4 +1,44 @@
 @import "../../../static/css/colors";
-h1 {
-  color: @white;
+.calculationlist {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  &__block {
+    width: 100%;
+    height: 100%;
+    background: @white;
+    border-radius: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: @gray-dark;
+    margin: 0;
+  }
+
+  .calculationlist__add-calculation {
+    background: @green;
+    color: @white;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    transition: transform 0.1s, background 0.3s;
+    &:hover {
+      background: @green-dark;
+      cursor: pointer;
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 }
