@@ -14,6 +14,12 @@ export default function Sidebar(props) {
     }
     return (
         <div className="sidebar">
+            <div className="sidebar__user">
+                <div className="sidebar__avatar-wrap">
+                    <img src="/static/img/blank_user.svg" alt="" className="sidebar__avatar"/>
+                </div>
+                <p className="sidebar__login">Login</p>
+            </div>
             <ul className="sidebar__ul">
                 <li className="sidebar__li" onClick={(e) => {props.navi(e, 'calculation_list')}}>
                     <img src="/static/img/calculation.svg" alt="" className="sidebar__link-icon"/>
