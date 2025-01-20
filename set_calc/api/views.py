@@ -10,6 +10,7 @@ methods = {
     'LangCheck': lang_check,
     'Logout': logout,
     'LangChange': lang_change,
+    'ProfileGet': profile_get,
 }
 
 
