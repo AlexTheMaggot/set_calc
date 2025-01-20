@@ -18,6 +18,7 @@ export default function Main(props) {
     let [auth, set_auth] = useState(false);
     let [sidebar_show, set_sidebar_show] = useState(false);
     let [header_show, set_header_show] = useState(false);
+    let [profile, set_profile] = useState({})
     let header_levels = [
         "calculation_list",
         "coefficient_list",
@@ -34,8 +35,8 @@ export default function Main(props) {
                 }
                 else {
                     set_auth(true)
-                    let r = api_sender("LangCheck", 1)
-                    r.then(data => {
+                    let r_1 = api_sender("LangCheck", 1)
+                    r_1.then(data => {
                         set_lang(data.result)
                         if ( props.level.slice(-2) !== data.result ) {
                             set_navigate(props.level.slice(0, -2) + data.result)
@@ -43,6 +44,10 @@ export default function Main(props) {
                         if (location.pathname === "/") {
                             set_navigate("calculation_list");
                         }
+                    })
+                    let r_2 = api_sender("ProfileGet", 1)
+                    r_2.then(data => {
+                        set_profile(data.result)
                     })
                 }
             })
@@ -83,7 +88,7 @@ export default function Main(props) {
     return (
             <div className={main_show ? "main" : "main main_hidden"}>
                 <div className={sidebar_show ? "main__sidebar" : "main__sidebar main__sidebar_none"}>
-                    <Sidebar lang={lang} navi={navi_content} />
+                    <Sidebar lang={lang} navi={navi_content} profile={profile} />
                 </div>
                 <div className="main__header-content">
                     <div className={header_show ? "main__header" : "main__header main__header_none"}>
