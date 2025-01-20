@@ -1,6 +1,8 @@
 @import "../../../static/css/colors";
 .sidebar {
-  padding-top: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   &__ul {
     list-style-type: none;
     margin: 0;
@@ -31,5 +33,29 @@
     color: @white;
     text-decoration: none;
     white-space: nowrap;
+  }
+  &__user {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    box-sizing: border-box;
+  }
+
+  &__avatar-wrap {
+    background: @blue-light;
+    padding: 20px;
+    border-radius: 100%;
+  }
+
+  &__avatar {
+    height: 100px;
+  }
+
+  &__login {
+    font-size: 1.3rem;
+    color: @white;
   }
 }
