@@ -9,6 +9,7 @@ methods = {
     'Auth': auth,
     'LangCheck': lang_check,
     'Logout': logout,
+    'LangChange': lang_change,
 }
 
 
