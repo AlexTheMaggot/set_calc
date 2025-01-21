@@ -2,12 +2,16 @@ import React from "react";
 import "./CoefficientList.css"
 export default function CoefficientList(props) {
     const text_content = {
-        "main_ru": "Coefficient List Ru",
-        "main_uz": "Coefficient List Uz",
+        "main_ru": "Коэффициенты",
+        "main_uz": "Koeffitsientlar",
     }
     return (
         <div className="coefficientlist">
-            <h1>{props.lang === "ru" ? text_content.main_ru : text_content.main_uz}</h1>
+            <div className="coefficientlist__block">
+                <div className="coefficientlist__top">
+                    <h1 className="coefficientlist__title">{text_content["main_" + props.lang]}</h1>
+                </div>
+            </div>
         </div>
     )
 }
