@@ -11,7 +11,7 @@ export default function CalculationList(props) {
         <div className="calculationlist">
             <div className="calculationlist__block">
                 <div className="calculationlist__top">
-                    <h1 className="calculationlist__title">{props.lang === "ru" ? text_content.main_ru : text_content.main_uz}</h1>
+                    <h1 className="calculationlist__title">{text_content["main_" + props.lang]}</h1>
                     <button className="calculationlist__add-calculation">{text_content["add_" + props.lang]}</button>
                 </div>
             </div>
