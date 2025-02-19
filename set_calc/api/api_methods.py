@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout as logout_view
 from django.contrib.auth.models import User
+from .models import *
 
 
 ERRORS = {
@@ -67,3 +68,25 @@ def profile_get(request, request_data):
         'username': user.username
     }
     return make_success(request_data['id'], data)
+
+
+def calculation_add(request, request_data):
+    user = request.user
+    calculation = Calculation.objects.create(user=user)
+    calculation.save()
+    return make_success(request_data['id'])
+
+
+def calculation_get_list(request, request_data):
+    calculations = Calculation.objects.all()
+    result = []
+    for calculation in calculations:
+        item = {
+            'id': calculation.id,
+            'user': {
+                'id': calculation.user.id,
+                'username': calculation.user.username,
+            }
+        }
+        result.append(item)
+    return make_success(request_data['id'], result)
