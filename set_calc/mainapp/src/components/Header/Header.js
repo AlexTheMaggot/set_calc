@@ -10,6 +10,8 @@ export default function Header(props) {
         "main_uz": "Header Uz",
         "exit_ru": "Выйти",
         "exit_uz": "Chiqish",
+        "search_ru": "Поиск...",
+        "search_uz": "Qidiruv...",
     }
     let exit_fetch = (e) => {
         let r = api_sender('Logout', 1)
@@ -30,7 +32,7 @@ export default function Header(props) {
     return (
         <div className="header" onMouseLeave={() => {set_lang_change(false)}}>
             <div className="header__left">
-                <h1>{props.lang === "ru" ? text_content.main_ru : text_content.main_uz}</h1>
+                <input type="text" className="header__search" placeholder={text_content["search_" + props.lang]}/>
             </div>
             <div className="header__right">
                 <div className="header__lang-wrap" onMouseEnter={() => {set_lang_change(true)}}>
