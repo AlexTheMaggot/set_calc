@@ -18,3 +18,7 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
+
+
+class Calculation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='calculations')
