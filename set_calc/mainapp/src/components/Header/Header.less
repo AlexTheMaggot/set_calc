@@ -1,5 +1,6 @@
 @import "../../../static/css/colors";
 .header {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,6 +69,22 @@
   }
   &__left {
 
+  }
+  &__search {
+    padding: 5px 10px;
+    font-size: 1.1rem;
+    border: 2px solid @blue;
+    border-radius: 5px;
+    background: @blue-light;
+    color: @white;
+    transition: all 0.3s;
+    &:focus {
+      outline: none;
+      transform: scale(1.03);
+    }
+    &::placeholder {
+      color: @gray-light;
+    }
   }
   &__right {
     display: flex;
