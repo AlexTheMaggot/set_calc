@@ -24,6 +24,7 @@ export default function Main(props) {
     let [new_calculation_appear, set_new_calculation_appear] = useState(false)
     let [new_calculation_block_show, set_new_calculation_block_show] = useState(false)
     let [new_calculation_block_appear, set_new_calculation_block_appear] = useState(false)
+    let [calculations_update, set_calculations_update] = useState(false)
     let header_levels = [
         "calculation_list",
         "coefficient_list",
@@ -125,7 +126,11 @@ export default function Main(props) {
                         {navigate === "coefficient_list" && <Navigate to="/coefficients/" />}
                         {navigate === "handbook_list" && <Navigate to="/handbooks/" />}
                         {props.level === "auth" && <Auth navi={navi} lang={lang} set_lang={set_lang} />}
-                        {props.level === "calculation_list" && <CalculationList lang={lang} new_calculation={new_calculation} />}
+                        {props.level === "calculation_list" && <CalculationList
+                            lang={lang}
+                            new_calculation={new_calculation}
+                            calculations_update={calculations_update}
+                            set_calculations_update={set_calculations_update}/>}
                         {props.level === "coefficient_list" && <CoefficientList lang={lang} />}
                         {props.level === "handbook_list" && <HandbookList lang={lang} />}
                     </div>
@@ -136,7 +141,8 @@ export default function Main(props) {
                         new_calculation_appear={new_calculation_appear}
                         close_new_calculation={close_new_calculation}
                         new_calculation_block_show={new_calculation_block_show}
-                        new_calculation_block_appear={new_calculation_block_appear}/>
+                        new_calculation_block_appear={new_calculation_block_appear}
+                        set_calculations_update={set_calculations_update}/>
                 )}
             </div>
         );
