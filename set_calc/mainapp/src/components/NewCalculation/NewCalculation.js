@@ -11,7 +11,7 @@ export default function NewCalculation(props) {
     const add_calculation = () => {
         let r = api_sender('CalculationAdd', 1)
         r.then(data => {
-            console.log(data)
+            props.set_calculations_update(true)
             props.close_new_calculation()
         })
     }
