@@ -13,6 +13,7 @@ methods = {
     'ProfileGet': profile_get,
     'CalculationAdd': calculation_add,
     'CalculationGetList': calculation_get_list,
+    'CalculationDelete': calculation_delete,
 }
 
 
