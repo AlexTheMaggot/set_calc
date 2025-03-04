@@ -1,0 +1,65 @@
+.deletecalculation {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333333AA;
+  transition: all 0.3s;
+}
+.deletecalculation_hidden {
+  opacity: 0;
+}
+.deletecalculation__block {
+  padding: 50px 50px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.deletecalculation__block_hidden {
+  opacity: 0;
+}
+.deletecalculation__block_none {
+  display: none;
+}
+.deletecalculation__btn {
+  color: #FFFFFF;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  transition: transform 0.1s, background 0.3s;
+}
+.deletecalculation__btn:hover {
+  cursor: pointer;
+}
+.deletecalculation__btn:active {
+  transform: scale(0.95);
+}
+.deletecalculation__btn_black {
+  background: #333333;
+}
+.deletecalculation__btn_black:hover {
+  background: #000000;
+}
+.deletecalculation__btn_red {
+  background: #C42525;
+}
+.deletecalculation__btn_red:hover {
+  background: #7F0C0C;
+}
+.deletecalculation__title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.deletecalculation__button-wrapper {
+  display: flex;
+  gap: 10px;
+}
+/*# sourceMappingURL=DeleteCalculation.css.map */

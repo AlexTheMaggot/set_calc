@@ -11,6 +11,7 @@
   flex: 0 0 50px;
   background: #244183;
   transition: all 0.3s;
+  overflow-x: hidden;
 }
 .main__sidebar:hover {
   flex: 0 0 300px;
@@ -34,5 +35,9 @@
   flex: 1 1 100px;
   display: flex;
   align-items: stretch;
+  transition: all 0.3s;
+}
+.main__content_hidden {
+  opacity: 0;
 }
 /*# sourceMappingURL=Main.css.map */
