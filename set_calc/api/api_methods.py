@@ -90,3 +90,9 @@ def calculation_get_list(request, request_data):
         }
         result.append(item)
     return make_success(request_data['id'], result)
+
+
+def calculation_delete(request, request_data):
+    calculation = Calculation.objects.get(id=request_data['params']['id'])
+    calculation.delete()
+    return make_success(request_data['id'])
