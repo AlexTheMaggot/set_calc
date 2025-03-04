@@ -8,6 +8,8 @@ import HandbookList from "../HandbookList/HandbookList";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 import NewCalculation from "../NewCalculation/NewCalculation";
+import DeleteCalculation from "../DeleteCalculation/DeleteCalculation";
+import EditCalculation from "../EditCalculation/EditCalculation";
 import api_sender from "../api_sender";
 
 
@@ -20,11 +22,17 @@ export default function Main(props) {
     let [sidebar_show, set_sidebar_show] = useState(false);
     let [header_show, set_header_show] = useState(false);
     let [profile, set_profile] = useState({})
-    let [new_calculation_show, set_new_calculation_show] = useState(false)
-    let [new_calculation_appear, set_new_calculation_appear] = useState(false)
-    let [new_calculation_block_show, set_new_calculation_block_show] = useState(false)
-    let [new_calculation_block_appear, set_new_calculation_block_appear] = useState(false)
+    let [new_calculation_modal, set_new_calculation_modal] = useState({
+        wrapper: {show: false, appear: false}, block: {show: false, appear: false}
+    })
+    let [delete_calculation_modal, set_delete_calculation_modal] = useState({
+        wrapper: {show: false, appear: false}, block: {show: false, appear: false}
+    })
+    let [edit_calculation_modal, set_edit_calculation_modal] = useState({
+        wrapper: {show: false, appear: false}, block: {show: false, appear: false}
+    })
     let [calculations_update, set_calculations_update] = useState(false)
+    let [calculation, set_calculation] = useState({})
     let header_levels = [
         "calculation_list",
         "coefficient_list",
@@ -79,24 +87,25 @@ export default function Main(props) {
             set_main_content_show(true);
         }, 600);
     }
-    let new_calculation = () => {
-        set_new_calculation_show(true)
+    let open_calculation_modal = (set_state, calc = null) => {
+        if (calc != null) {
+            set_calculation(calc)
+        }
+        set_state({ wrapper: {show: true, appear: false}, block: {show: false, appear: false}})
         setTimeout(() => {
-            set_new_calculation_appear(true)
-            set_new_calculation_block_show(true)
+            set_state({ wrapper: {show: true, appear: true}, block: {show: true, appear: false}})
         })
         setTimeout(() => {
-            set_new_calculation_block_appear(true)
+            set_state({ wrapper: {show: true, appear: true}, block: {show: true, appear: true}})
         }, 300)
     }
-    let close_new_calculation = () => {
-        set_new_calculation_block_appear(false)
+    let close_calculation_modal = (set_state) => {
+        set_state({ wrapper: {show: true, appear: true}, block: {show: true, appear: false}})
         setTimeout(() => {
-            set_new_calculation_block_show(false)
-            set_new_calculation_appear(false)
+            set_state({ wrapper: {show: true, appear: false}, block: {show: false, appear: false}})
         }, 300)
         setTimeout(() => {
-            set_new_calculation_show(false)
+            set_state({ wrapper: {show: false, appear: false}, block: {show: false, appear: false}})
         }, 600)
     }
     useEffect(() => {
@@ -128,21 +137,45 @@ export default function Main(props) {
                         {props.level === "auth" && <Auth navi={navi} lang={lang} set_lang={set_lang} />}
                         {props.level === "calculation_list" && <CalculationList
                             lang={lang}
-                            new_calculation={new_calculation}
+                            open_calculation_modal={open_calculation_modal}
+                            set_new_calculation_modal={set_new_calculation_modal}
+                            set_edit_calculation_modal={set_edit_calculation_modal}
+                            set_delete_calculation_modal={set_delete_calculation_modal}
                             calculations_update={calculations_update}
-                            set_calculations_update={set_calculations_update}/>}
+                            set_calculations_update={set_calculations_update}
+                        />}
                         {props.level === "coefficient_list" && <CoefficientList lang={lang} />}
                         {props.level === "handbook_list" && <HandbookList lang={lang} />}
                     </div>
                 </div>
-                {new_calculation_show && (
+                {new_calculation_modal.wrapper.show && (
                     <NewCalculation
                         lang={lang}
-                        new_calculation_appear={new_calculation_appear}
-                        close_new_calculation={close_new_calculation}
-                        new_calculation_block_show={new_calculation_block_show}
-                        new_calculation_block_appear={new_calculation_block_appear}
-                        set_calculations_update={set_calculations_update}/>
+                        close_calculation_modal={close_calculation_modal}
+                        new_calculation_modal={new_calculation_modal}
+                        set_new_calculation_modal={set_new_calculation_modal}
+                        set_calculations_update={set_calculations_update}
+                    />
+                )}
+                {delete_calculation_modal.wrapper.show && (
+                    <DeleteCalculation
+                        lang={lang}
+                        close_calculation_modal={close_calculation_modal}
+                        delete_calculation_modal={delete_calculation_modal}
+                        set_delete_calculation_modal={set_delete_calculation_modal}
+                        set_calculations_update={set_calculations_update}
+                        calculation={calculation}
+                    />
+                )}
+                {edit_calculation_modal.wrapper.show && (
+                    <EditCalculation
+                        lang={lang}
+                        close_calculation_modal={close_calculation_modal}
+                        edit_calculation_modal={edit_calculation_modal}
+                        set_edit_calculation_modal={set_edit_calculation_modal}
+                        set_calculations_update={set_calculations_update}
+                        calculation={calculation}
+                    />
                 )}
             </div>
         );
