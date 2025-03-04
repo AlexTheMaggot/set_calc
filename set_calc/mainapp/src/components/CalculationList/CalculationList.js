@@ -8,6 +8,12 @@ export default function CalculationList(props) {
         "main_uz": "Mening hisoblarim",
         "add_ru": "Новый рассчет",
         "add_uz": "Yangi hisoblash",
+        "manager_ru": "Менеджер",
+        "manager_uz": "Menejer",
+        "edit_ru": "Редактировать",
+        "edit_uz": "Tahrirlash",
+        "delete_ru": "Удалить",
+        "delete_uz": "Oʻchirish",
     }
     useEffect(() => {
         let r = api_sender("CalculationGetList", 1)
@@ -23,16 +29,16 @@ export default function CalculationList(props) {
             <div className="calculationlist__block">
                 <div className="calculationlist__top">
                     <h1 className="calculationlist__title">{text_content["main_" + props.lang]}</h1>
-                    <button onClick={props.new_calculation} className="calculationlist__add-calculation">{text_content["add_" + props.lang]}</button>
+                    <button onClick={() => {props.open_calculation_modal(props.set_new_calculation_modal)}} className="calculationlist__add-calculation">{text_content["add_" + props.lang]}</button>
                 </div>
                 <div className="calculationlist__data">
                     <table className="calculationlist__table">
                         <thead className="calculationlist__thead">
                         <tr className="calculationlist__tr">
                             <th className="calculationlist__th calculationlist__th-id">ID</th>
-                            <th className="calculationlist__th calculationlist__th-manager">Менеджер</th>
-                            <th className="calculationlist__th calculationlist__th-edit">Редактировать</th>
-                            <th className="calculationlist__th calculationlist__th-delete">Удалить</th>
+                            <th className="calculationlist__th calculationlist__th-manager">{text_content['manager_' + props.lang]}</th>
+                            <th className="calculationlist__th calculationlist__th-edit">{text_content['edit_' + props.lang]}</th>
+                            <th className="calculationlist__th calculationlist__th-delete">{text_content['delete_' + props.lang]}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -41,7 +47,7 @@ export default function CalculationList(props) {
                                 <td className="calculationlist__td calculationlist__td-id">{calculation.id}</td>
                                 <td className="calculationlist__td calculationlist__td-manager">{calculation.user.username}</td>
                                 <td className="calculationlist__td calculationlist__td-edit">
-                                    <button className="calculationlist__td-btn calculationlist__td-btn_yellow">
+                                    <button onClick={() => {props.open_calculation_modal(props.set_edit_calculation_modal, calculation)}} className="calculationlist__td-btn calculationlist__td-btn_yellow">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              viewBox="0 0 1000 1000"
                                              className="calculationlist__td-img">
@@ -58,7 +64,7 @@ export default function CalculationList(props) {
                                     </button>
                                 </td>
                                 <td className="calculationlist__td calculationlist__td-delete">
-                                    <button className="calculationlist__td-btn calculationlist__td-btn_red">
+                                    <button onClick={() => {props.open_calculation_modal(props.set_delete_calculation_modal, calculation)}} className="calculationlist__td-btn calculationlist__td-btn_red">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              viewBox="0 0 1000 1000"
                                              className="calculationlist__td-img">
