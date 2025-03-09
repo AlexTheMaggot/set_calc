@@ -116,7 +116,10 @@ def calculation_delete(request, request_data):
 
 @auth_required
 def user_get(request, request_data):
-    users = User.objects.all()
+    if 'params' in request_data and 'username' in request_data['params']:
+        users = User.objects.filter(username__icontains=request_data['params']['username'])
+    else:
+        users = User.objects.all()
     result = []
     for user in users:
         result.append({
