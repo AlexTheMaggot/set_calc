@@ -14,6 +14,7 @@ methods = {
     'CalculationAdd': calculation_add,
     'CalculationGetList': calculation_get_list,
     'CalculationDelete': calculation_delete,
+    'UserGet': user_get,
 }
 
 
