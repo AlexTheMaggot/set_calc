@@ -27,7 +27,6 @@ export default function EditCalculation(props) {
     }
     const calculation_manager_blur = (text) => {
         let u = managers.find(user => user.username === text)
-        console.log(u)
         if (u === undefined) {
             set_calculation_manager("")
         }
