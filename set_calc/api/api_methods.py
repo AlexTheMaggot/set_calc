@@ -92,7 +92,7 @@ def calculation_add(request, request_data):
 
 
 @auth_required
-def calculation_get_list(request, request_data):
+def calculation_get(request, request_data):
     calculations = Calculation.objects.all()
     result = []
     for calculation in calculations:
@@ -111,6 +111,15 @@ def calculation_get_list(request, request_data):
 def calculation_delete(request, request_data):
     calculation = Calculation.objects.get(id=request_data['params']['id'])
     calculation.delete()
+    return make_success(request_data['id'])
+
+
+def calculation_update(request, request_data):
+    calculation = Calculation.objects.get(id=request_data['params']['id'])
+    if 'manager' in request_data['params'].keys():
+        manager = User.objects.get(username=request_data['params']['manager'])
+        calculation.user = manager
+    calculation.save()
     return make_success(request_data['id'])
 
 

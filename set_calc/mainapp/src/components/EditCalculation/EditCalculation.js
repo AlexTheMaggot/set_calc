@@ -15,8 +15,11 @@ export default function EditCalculation(props) {
         "cancel_uz": "Bekor qilish",
     }
     const edit_calculation = () => {
-        props.set_calculations_update(true)
-        props.close_calculation_modal(props.set_edit_calculation_modal)
+        let r = api_sender('CalculationUpdate', 1, {id: props.calculation.id, manager: calculation_manager})
+        r.then(() => {
+            props.set_calculations_update(true)
+            props.close_calculation_modal(props.set_edit_calculation_modal)
+        })
     }
     const calculation_manager_change = (text) => {
         const r = api_sender('UserGet', 1, {username: text})

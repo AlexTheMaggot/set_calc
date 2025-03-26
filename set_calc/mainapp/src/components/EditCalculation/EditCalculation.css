@@ -48,18 +48,23 @@
 .editcalculation__btn_black:hover {
   background: #000000;
 }
-.editcalculation__btn_red {
-  background: #C42525;
+.editcalculation__btn_yellow {
+  background: #C4C425;
 }
-.editcalculation__btn_red:hover {
-  background: #7F0C0C;
+.editcalculation__btn_yellow:hover {
+  background: #7F7F0C;
 }
 .editcalculation__title {
   font-size: 2rem;
   font-weight: 600;
+  margin: 0;
 }
 .editcalculation__button-wrapper {
   display: flex;
   gap: 10px;
+}
+.editcalculation__input {
+  font-size: 1.1rem;
+  margin: 10px 0;
 }
 /*# sourceMappingURL=EditCalculation.css.map */
