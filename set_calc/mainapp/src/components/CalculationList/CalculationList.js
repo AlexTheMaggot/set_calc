@@ -41,7 +41,7 @@ export default function CalculationList(props) {
                             <th className="calculationlist__th calculationlist__th-delete">{text_content['delete_' + props.lang]}</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="calculationlist__tbody">
                         {calculations.map((calculation) => (
                             <tr key={calculation.id} className="calculationlist__tr">
                                 <td className="calculationlist__td calculationlist__td-id">{calculation.id}</td>
