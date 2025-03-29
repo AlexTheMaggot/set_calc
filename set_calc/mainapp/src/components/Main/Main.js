@@ -33,6 +33,7 @@ export default function Main(props) {
         wrapper: {show: false, appear: false}, block: {show: false, appear: false}
     })
     let [calculations_update, set_calculations_update] = useState(false)
+    let [customers_update, set_customers_update] = useState(false)
     let [calculation, set_calculation] = useState({})
     let header_levels = [
         "calculation_list",
@@ -159,6 +160,8 @@ export default function Main(props) {
                         {props.level === "customer_list" && <CustomerList
                             lang={lang}
                             navi_content={navi_content}
+                            customers_update={customers_update}
+                            set_customers_update={customers_update}
                         />}
                     </div>
                 </div>
