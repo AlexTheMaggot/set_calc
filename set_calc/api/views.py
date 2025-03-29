@@ -11,7 +11,7 @@ methods = {
     'LangChange': lang_change,
     'ProfileGet': profile_get,
     'CalculationAdd': calculation_add,
-    'CalculationGetList': calculation_get,
+    'CalculationGet': calculation_get,
     'CalculationDelete': calculation_delete,
     'CalculationUpdate': calculation_update,
     'UserGet': user_get,
