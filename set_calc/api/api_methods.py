@@ -149,3 +149,25 @@ def customer_get(request, request_data):
         }
         result.append(item)
     return make_success(request_data['id'], result)
+
+
+@auth_required
+def customer_add(request, request_data):
+    customer = Customer.objects.create(name=request_data['params']['name'])
+    customer.save()
+    return make_success(request_data['id'])
+
+
+def customer_update(request, request_data):
+    customer = Customer.objects.get(id=request_data['params']['id'])
+    if 'name' in request_data['params'].keys():
+        customer.name = request_data['params']['name']
+    customer.save()
+    return make_success(request_data['id'])
+
+
+@auth_required
+def customer_delete(request, request_data):
+    customer = Customer.objects.get(id=request_data['params']['id'])
+    customer.delete()
+    return make_success(request_data['id'])
