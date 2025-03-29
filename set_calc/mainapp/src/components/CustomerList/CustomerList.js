@@ -18,7 +18,7 @@ export default function CustomerList(props) {
         "delete_uz": "Oʻchirish",
     }
     useEffect(() => {
-        let r = api_sender("CalculationGetList", 1)
+        let r = api_sender("CalculationGet", 1)
         r.then(data => {
             calculations_set(data.result)
             if (props.calculations_update === true) {
