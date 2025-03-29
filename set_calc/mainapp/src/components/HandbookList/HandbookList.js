@@ -14,7 +14,7 @@ export default function HandbookList(props) {
                     <h1 className="handbooklist__title">{text_content["main_" + props.lang]}</h1>
                 </div>
                 <div className="handbooklist__items">
-                    <div className="handbooklist__item">
+                    <div onClick={(e) => {props.navi_content(e, "customer_list")}} className="handbooklist__item">
                         <img className="handbooklist__item-img" src="/static/img/customers.svg"/>
                         <p className="handbooklist__item-title">{text_content["customers_" + props.lang]}</p>
                     </div>
