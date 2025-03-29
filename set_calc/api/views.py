@@ -1,6 +1,5 @@
 import json
-from django.shortcuts import render
-from django.http import HttpResponseForbidden, JsonResponse
+from django.http import HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
 from .api_methods import *
 
@@ -16,6 +15,7 @@ methods = {
     'CalculationDelete': calculation_delete,
     'CalculationUpdate': calculation_update,
     'UserGet': user_get,
+    'CustomerGet': customer_get,
 }
 
 
