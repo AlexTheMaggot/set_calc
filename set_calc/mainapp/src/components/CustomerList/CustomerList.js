@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./CustomerList.css";
 import api_sender from "../api_sender";
 export default function CustomerList(props) {
-    const [calculations, calculations_set] = useState([])
+    const [customers, customers_set] = useState([])
     const text_content = {
         "customers_ru": "Клиенты",
         "customers_uz": "Mijozlar",
@@ -18,14 +18,14 @@ export default function CustomerList(props) {
         "delete_uz": "Oʻchirish",
     }
     useEffect(() => {
-        let r = api_sender("CalculationGet", 1)
+        let r = api_sender("CustomerGet", 1)
         r.then(data => {
-            calculations_set(data.result)
-            if (props.calculations_update === true) {
-                props.set_calculations_update(false)
+            customers_set(data.result)
+            if (props.customers_update === true) {
+                props.set_customers_update(false)
             }
         })
-    }, [props.calculations_update])
+    }, [props.customers_update])
     return (
         <div className="customerlist">
             <div className="customerlist__block">
@@ -47,10 +47,10 @@ export default function CustomerList(props) {
                         </tr>
                         </thead>
                         <tbody className="customerlist__tbody">
-                        {calculations.map((calculation) => (
-                            <tr key={calculation.id} className="customerlist__tr">
-                                <td className="customerlist__td customerlist__td-id">{calculation.id}</td>
-                                <td className="customerlist__td customerlist__td-manager">{calculation.user.username}</td>
+                        {customers.map((customer) => (
+                            <tr key={customer.id} className="customerlist__tr">
+                                <td className="customerlist__td customerlist__td-id">{customer.id}</td>
+                                <td className="customerlist__td customerlist__td-manager">{customer.name}</td>
                                 <td className="customerlist__td customerlist__td-edit">
                                     <button onClick={() => {props.open_calculation_modal(props.set_edit_calculation_modal, calculation)}} className="customerlist__td-btn customerlist__td-btn_yellow">
                                         <svg xmlns="http://www.w3.org/2000/svg"
