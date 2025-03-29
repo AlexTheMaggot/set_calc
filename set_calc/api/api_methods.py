@@ -136,3 +136,16 @@ def user_get(request, request_data):
             'username': user.username,
         })
     return make_success(request_data['id'], result)
+
+
+@auth_required
+def customer_get(request, request_data):
+    customers = Customer.objects.all()
+    result = []
+    for customer in customers:
+        item = {
+            'id': customer.id,
+            'name': customer.name,
+        }
+        result.append(item)
+    return make_success(request_data['id'], result)
