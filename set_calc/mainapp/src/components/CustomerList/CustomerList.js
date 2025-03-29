@@ -32,7 +32,7 @@ export default function CustomerList(props) {
                 <div className="customerlist__top">
                     <h1 className="customerlist__title">{text_content["customers_" + props.lang]}</h1>
                     <div className="customerlist__top-right">
-                        <button onClick={() => {props.open_calculation_modal(props.set_new_calculation_modal)}} className="customerlist__btn customerlist__btn_green">{text_content["add_" + props.lang]}</button>
+                        <button onClick={() => {props.open_modal(props.set_new_customer_modal)}} className="customerlist__btn customerlist__btn_green">{text_content["add_" + props.lang]}</button>
                         <button onClick={(e) => {props.navi_content(e, "handbook_list")}} className="customerlist__btn customerlist__btn_blue">{text_content["back_" + props.lang]}</button>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ export default function CustomerList(props) {
                                 <td className="customerlist__td customerlist__td-id">{customer.id}</td>
                                 <td className="customerlist__td customerlist__td-manager">{customer.name}</td>
                                 <td className="customerlist__td customerlist__td-edit">
-                                    <button onClick={() => {props.open_calculation_modal(props.set_edit_calculation_modal, calculation)}} className="customerlist__td-btn customerlist__td-btn_yellow">
+                                    <button onClick={() => {props.open_modal(props.set_edit_customer_modal, customer)}} className="customerlist__td-btn customerlist__td-btn_yellow">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              viewBox="0 0 1000 1000"
                                              className="customerlist__td-img">
@@ -69,7 +69,7 @@ export default function CustomerList(props) {
                                     </button>
                                 </td>
                                 <td className="customerlist__td customerlist__td-delete">
-                                    <button onClick={() => {props.open_calculation_modal(props.set_delete_calculation_modal, calculation)}} className="customerlist__td-btn customerlist__td-btn_red">
+                                    <button onClick={() => {props.open_modal(props.set_delete_customer_modal, customer)}} className="customerlist__td-btn customerlist__td-btn_red">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              viewBox="0 0 1000 1000"
                                              className="customerlist__td-img">
