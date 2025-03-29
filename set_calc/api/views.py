@@ -12,10 +12,13 @@ methods = {
     'ProfileGet': profile_get,
     'CalculationAdd': calculation_add,
     'CalculationGet': calculation_get,
-    'CalculationDelete': calculation_delete,
     'CalculationUpdate': calculation_update,
+    'CalculationDelete': calculation_delete,
     'UserGet': user_get,
+    'CustomerAdd': customer_add,
     'CustomerGet': customer_get,
+    'CustomerUpdate': customer_update,
+    'CustomerDelete': customer_delete,
 }
 
 
