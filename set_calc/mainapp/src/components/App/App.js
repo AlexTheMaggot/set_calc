@@ -12,6 +12,7 @@ export default function App(props) {
                     <Route exact path="/calculations/" element={<Main level="calculation_list"/>}></Route>
                     <Route exact path="/coefficients/" element={<Main level="coefficient_list"/>}></Route>
                     <Route exact path="/handbooks/" element={<Main level="handbook_list"/>}></Route>
+                    <Route exact path="/handbooks/customers/" element={<Main level="customer_list"/>}></Route>
                     <Route exact path="/auth/" element={<Main level="auth"/>}></Route>
                 </Routes>
             </BrowserRouter>
