@@ -137,7 +137,9 @@ export default function Main(props) {
                         {navigate === "coefficient_list" && <Navigate to="/coefficients/" />}
                         {navigate === "handbook_list" && <Navigate to="/handbooks/" />}
                         {navigate === "customer_list" && <Navigate to="/handbooks/customers/" />}
-                        {props.level === "auth" && <Auth navi={navi} lang={lang} set_lang={set_lang} />}
+                        {props.level === "auth" && <Auth
+                            navi={navi} lang={lang} set_lang={set_lang}
+                        />}
                         {props.level === "calculation_list" && <CalculationList
                             lang={lang}
                             open_calculation_modal={open_calculation_modal}
@@ -147,9 +149,17 @@ export default function Main(props) {
                             calculations_update={calculations_update}
                             set_calculations_update={set_calculations_update}
                         />}
-                        {props.level === "coefficient_list" && <CoefficientList lang={lang} />}
-                        {props.level === "handbook_list" && <HandbookList lang={lang} />}
-                        {props.level === "customer_list" && <CustomerList lang={lang} />}
+                        {props.level === "coefficient_list" && <CoefficientList
+                            lang={lang}
+                        />}
+                        {props.level === "handbook_list" && <HandbookList
+                            lang={lang}
+                            navi_content={navi_content}
+                        />}
+                        {props.level === "customer_list" && <CustomerList
+                            lang={lang}
+                            navi_content={navi_content}
+                        />}
                     </div>
                 </div>
                 {new_calculation_modal.wrapper.show && (
