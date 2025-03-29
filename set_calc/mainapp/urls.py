@@ -7,5 +7,6 @@ urlpatterns = [
     path('calculations/', views.index),
     path('coefficients/', views.index),
     path('handbooks/', views.index),
+    path('handbooks/customers/', views.index),
     path('auth/', views.index),
 ]
