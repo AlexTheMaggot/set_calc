@@ -2,15 +2,18 @@ import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 import "./Main.css";
 import Auth from "../Auth/Auth";
+import NewCalculation from "../NewCalculation/NewCalculation";
 import CalculationList from "../CalculationList/CalculationList";
+import EditCalculation from "../EditCalculation/EditCalculation";
+import DeleteCalculation from "../DeleteCalculation/DeleteCalculation";
 import CoefficientList from "../CoefficientList/CoefficientList";
 import HandbookList from "../HandbookList/HandbookList";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
-import NewCalculation from "../NewCalculation/NewCalculation";
-import DeleteCalculation from "../DeleteCalculation/DeleteCalculation";
-import EditCalculation from "../EditCalculation/EditCalculation";
 import CustomerList from "../CustomerList/CustomerList";
+import NewCustomer from "../NewCustomer/NewCustomer";
+import EditCustomer from "../EditCustomer/EditCustomer";
+import DeleteCustomer from "../DeleteCustomer/DeleteCustomer";
 import api_sender from "../api_sender";
 
 
@@ -23,18 +26,27 @@ export default function Main(props) {
     let [sidebar_show, set_sidebar_show] = useState(false);
     let [header_show, set_header_show] = useState(false);
     let [profile, set_profile] = useState({})
+    let [modal_object, set_modal_object] = useState({})
     let [new_calculation_modal, set_new_calculation_modal] = useState({
-        wrapper: {show: false, appear: false}, block: {show: false, appear: false}
-    })
-    let [delete_calculation_modal, set_delete_calculation_modal] = useState({
         wrapper: {show: false, appear: false}, block: {show: false, appear: false}
     })
     let [edit_calculation_modal, set_edit_calculation_modal] = useState({
         wrapper: {show: false, appear: false}, block: {show: false, appear: false}
     })
+    let [delete_calculation_modal, set_delete_calculation_modal] = useState({
+        wrapper: {show: false, appear: false}, block: {show: false, appear: false}
+    })
     let [calculations_update, set_calculations_update] = useState(false)
+    let [new_customer_modal, set_new_customer_modal] = useState({
+        wrapper: {show: false, appear: false}, block: {show: false, appear: false}
+    })
+    let [edit_customer_modal, set_edit_customer_modal] = useState({
+        wrapper: {show: false, appear: false}, block: {show: false, appear: false}
+    })
+    let [delete_customer_modal, set_delete_customer_modal] = useState({
+        wrapper: {show: false, appear: false}, block: {show: false, appear: false}
+    })
     let [customers_update, set_customers_update] = useState(false)
-    let [calculation, set_calculation] = useState({})
     let header_levels = [
         "calculation_list",
         "coefficient_list",
@@ -90,9 +102,9 @@ export default function Main(props) {
             set_main_content_show(true);
         }, 600);
     }
-    let open_calculation_modal = (set_state, calc = null) => {
-        if (calc != null) {
-            set_calculation(calc)
+    let open_modal = (set_state, obj = null) => {
+        if (obj != null) {
+            set_modal_object(obj)
         }
         set_state({ wrapper: {show: true, appear: false}, block: {show: false, appear: false}})
         setTimeout(() => {
@@ -102,7 +114,7 @@ export default function Main(props) {
             set_state({ wrapper: {show: true, appear: true}, block: {show: true, appear: true}})
         }, 300)
     }
-    let close_calculation_modal = (set_state) => {
+    let close_modal = (set_state) => {
         set_state({ wrapper: {show: true, appear: true}, block: {show: true, appear: false}})
         setTimeout(() => {
             set_state({ wrapper: {show: true, appear: false}, block: {show: false, appear: false}})
@@ -143,7 +155,7 @@ export default function Main(props) {
                         />}
                         {props.level === "calculation_list" && <CalculationList
                             lang={lang}
-                            open_calculation_modal={open_calculation_modal}
+                            open_modal={open_modal}
                             set_new_calculation_modal={set_new_calculation_modal}
                             set_edit_calculation_modal={set_edit_calculation_modal}
                             set_delete_calculation_modal={set_delete_calculation_modal}
@@ -159,16 +171,20 @@ export default function Main(props) {
                         />}
                         {props.level === "customer_list" && <CustomerList
                             lang={lang}
-                            navi_content={navi_content}
+                            open_modal={open_modal}
+                            set_new_customer_modal={set_new_customer_modal}
+                            set_edit_customer_modal={set_edit_customer_modal}
+                            set_delete_customer_modal={set_delete_customer_modal}
                             customers_update={customers_update}
-                            set_customers_update={customers_update}
+                            set_customers_update={set_customers_update}
+                            navi_content={navi_content}
                         />}
                     </div>
                 </div>
                 {new_calculation_modal.wrapper.show && (
                     <NewCalculation
                         lang={lang}
-                        close_calculation_modal={close_calculation_modal}
+                        close_modal={close_modal}
                         new_calculation_modal={new_calculation_modal}
                         set_new_calculation_modal={set_new_calculation_modal}
                         set_calculations_update={set_calculations_update}
@@ -177,21 +193,50 @@ export default function Main(props) {
                 {delete_calculation_modal.wrapper.show && (
                     <DeleteCalculation
                         lang={lang}
-                        close_calculation_modal={close_calculation_modal}
+                        close_modal={close_modal}
                         delete_calculation_modal={delete_calculation_modal}
                         set_delete_calculation_modal={set_delete_calculation_modal}
                         set_calculations_update={set_calculations_update}
-                        calculation={calculation}
+                        calculation={modal_object}
                     />
                 )}
                 {edit_calculation_modal.wrapper.show && (
                     <EditCalculation
                         lang={lang}
-                        close_calculation_modal={close_calculation_modal}
+                        close_modal={close_modal}
                         edit_calculation_modal={edit_calculation_modal}
                         set_edit_calculation_modal={set_edit_calculation_modal}
                         set_calculations_update={set_calculations_update}
-                        calculation={calculation}
+                        calculation={modal_object}
+                    />
+                )}
+                {new_customer_modal.wrapper.show && (
+                    <NewCustomer
+                        lang={lang}
+                        close_modal={close_modal}
+                        new_customer_modal={new_customer_modal}
+                        set_new_customer_modal={set_new_customer_modal}
+                        set_customers_update={set_customers_update}
+                    />
+                )}
+                {delete_customer_modal.wrapper.show && (
+                    <DeleteCustomer
+                        lang={lang}
+                        close_modal={close_modal}
+                        delete_customer_modal={delete_customer_modal}
+                        set_delete_customer_modal={set_delete_customer_modal}
+                        set_customers_update={set_customers_update}
+                        customer={modal_object}
+                    />
+                )}
+                {edit_customer_modal.wrapper.show && (
+                    <EditCustomer
+                        lang={lang}
+                        close_modal={close_modal}
+                        edit_customer_modal={edit_customer_modal}
+                        set_edit_customer_modal={set_edit_customer_modal}
+                        set_customers_update={set_customers_update}
+                        customer={modal_object}
                     />
                 )}
             </div>
