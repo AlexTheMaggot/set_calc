@@ -1,0 +1,58 @@
+.newcustomer {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333333AA;
+  transition: all 0.3s;
+}
+.newcustomer_hidden {
+  opacity: 0;
+}
+.newcustomer__block {
+  padding: 200px 400px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+.newcustomer__block_hidden {
+  opacity: 0;
+}
+.newcustomer__block_none {
+  display: none;
+}
+.newcustomer__btn {
+  color: #FFFFFF;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  transition: transform 0.1s, background 0.3s;
+}
+.newcustomer__btn:hover {
+  cursor: pointer;
+}
+.newcustomer__btn:active {
+  transform: scale(0.95);
+}
+.newcustomer__btn_green {
+  background: #1E9C1E;
+}
+.newcustomer__btn_green:hover {
+  background: #0A660A;
+}
+.newcustomer__btn_black {
+  background: #333333;
+}
+.newcustomer__btn_black:hover {
+  background: #000000;
+}
+.newcustomer__input {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+/*# sourceMappingURL=NewCustomer.css.map */
