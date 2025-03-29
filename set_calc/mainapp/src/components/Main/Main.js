@@ -10,6 +10,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import NewCalculation from "../NewCalculation/NewCalculation";
 import DeleteCalculation from "../DeleteCalculation/DeleteCalculation";
 import EditCalculation from "../EditCalculation/EditCalculation";
+import CustomerList from "../CustomerList/CustomerList";
 import api_sender from "../api_sender";
 
 
@@ -37,6 +38,7 @@ export default function Main(props) {
         "calculation_list",
         "coefficient_list",
         "handbook_list",
+        "customer_list",
     ];
     let auth_checker = () => {
         if (auth === false) {
@@ -134,6 +136,7 @@ export default function Main(props) {
                         {navigate === "calculation_list" && <Navigate to="/calculations/" />}
                         {navigate === "coefficient_list" && <Navigate to="/coefficients/" />}
                         {navigate === "handbook_list" && <Navigate to="/handbooks/" />}
+                        {navigate === "customer_list" && <Navigate to="/handbooks/customers/" />}
                         {props.level === "auth" && <Auth navi={navi} lang={lang} set_lang={set_lang} />}
                         {props.level === "calculation_list" && <CalculationList
                             lang={lang}
@@ -146,6 +149,7 @@ export default function Main(props) {
                         />}
                         {props.level === "coefficient_list" && <CoefficientList lang={lang} />}
                         {props.level === "handbook_list" && <HandbookList lang={lang} />}
+                        {props.level === "customer_list" && <CustomerList lang={lang} />}
                     </div>
                 </div>
                 {new_calculation_modal.wrapper.show && (
