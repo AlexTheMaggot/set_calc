@@ -25,8 +25,7 @@
     margin: 0;
   }
 
-  &__add-calculation {
-    background: @green;
+  &__btn {
     color: @white;
     border-radius: 5px;
     border: none;
@@ -34,11 +33,22 @@
     padding: 10px 20px;
     transition: transform 0.1s, background 0.3s;
     &:hover {
-      background: @green-dark;
       cursor: pointer;
     }
     &:active {
       transform: scale(0.95);
+    }
+    &_green {
+      background: @green;
+      &:hover {
+        background: @green-dark;
+      }
+    }
+    &_blue {
+      background: @blue;
+      &:hover {
+        background: @blue-dark;
+      }
     }
   }
   &__data {
@@ -135,6 +145,10 @@
     height: calc(100vh - 185px);
     width: 100%;
     overflow-y: auto;
+  }
+  &__top-right {
+    display: flex;
+    gap: 5px;
   }
 }
 thead, tbody tr {
