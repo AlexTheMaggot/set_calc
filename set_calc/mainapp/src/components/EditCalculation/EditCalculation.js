@@ -18,7 +18,7 @@ export default function EditCalculation(props) {
         let r = api_sender('CalculationUpdate', 1, {id: props.calculation.id, manager: calculation_manager})
         r.then(() => {
             props.set_calculations_update(true)
-            props.close_calculation_modal(props.set_edit_calculation_modal)
+            props.close_modal(props.set_edit_calculation_modal)
         })
     }
     const calculation_manager_change = (text) => {
@@ -36,7 +36,7 @@ export default function EditCalculation(props) {
     }
     return (
         <div onClick={() => {
-            props.close_calculation_modal(props.set_edit_calculation_modal)
+            props.close_modal(props.set_edit_calculation_modal)
         }}
              className={props.edit_calculation_modal.wrapper.appear ? "editcalculation" : "editcalculation editcalculation_hidden"}>
             <div onClick={(e) => {
@@ -54,7 +54,7 @@ export default function EditCalculation(props) {
                     <button onClick={edit_calculation}
                             className="editcalculation__btn editcalculation__btn_yellow">{text_content["edit_" + props.lang]}</button>
                     <button onClick={() => {
-                        props.close_calculation_modal(props.set_edit_calculation_modal)
+                        props.close_modal(props.set_edit_calculation_modal)
                     }}
                             className="editcalculation__btn editcalculation__btn_black">{text_content["cancel_" + props.lang]}</button>
                 </div>
