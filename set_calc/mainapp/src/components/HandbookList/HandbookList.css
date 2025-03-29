@@ -22,4 +22,37 @@
   color: #333333;
   margin: 0;
 }
+.handbooklist__items {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+.handbooklist__item {
+  background: #CCCCCC;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: 0.3s;
+}
+.handbooklist__item:hover {
+  transform: scale(0.97);
+  cursor: pointer;
+}
+.handbooklist__item:active {
+  transform: scale(0.9);
+}
+.handbooklist__item-img {
+  height: 50px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.handbooklist__item-title {
+  margin: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
 /*# sourceMappingURL=HandbookList.css.map */

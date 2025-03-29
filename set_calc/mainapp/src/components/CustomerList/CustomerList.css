@@ -1,10 +1,10 @@
-.calculationlist {
+.customerlist {
   width: 100%;
   height: 100%;
   padding: 5px;
   box-sizing: border-box;
 }
-.calculationlist__block {
+.customerlist__block {
   width: 100%;
   height: 100%;
   background: #FFFFFF;
@@ -14,15 +14,15 @@
   display: flex;
   flex-direction: column;
 }
-.calculationlist__top {
+.customerlist__top {
   display: flex;
   justify-content: space-between;
 }
-.calculationlist__title {
+.customerlist__title {
   color: #333333;
   margin: 0;
 }
-.calculationlist__add-calculation {
+.customerlist__add-calculation {
   background: #1E9C1E;
   color: #FFFFFF;
   border-radius: 5px;
@@ -31,86 +31,86 @@
   padding: 10px 20px;
   transition: transform 0.1s, background 0.3s;
 }
-.calculationlist__add-calculation:hover {
+.customerlist__add-calculation:hover {
   background: #0A660A;
   cursor: pointer;
 }
-.calculationlist__add-calculation:active {
+.customerlist__add-calculation:active {
   transform: scale(0.95);
 }
-.calculationlist__table {
+.customerlist__table {
   margin-top: 10px;
   width: 100%;
   border-collapse: collapse;
 }
-.calculationlist__thead {
+.customerlist__thead {
   background: #0C2255;
   color: #FFFFFF;
 }
-.calculationlist__tr:nth-child(2n) {
+.customerlist__tr:nth-child(2n) {
   background: #CCCCCC;
 }
-.calculationlist__th {
+.customerlist__th {
   padding: 10px;
   font-size: 1.1rem;
 }
-.calculationlist__td {
+.customerlist__td {
   text-align: center;
   padding: 10px;
 }
-.calculationlist__th-id {
+.customerlist__th-id {
   width: 50px;
 }
-.calculationlist__th-manager {
+.customerlist__th-manager {
   text-align: left;
 }
-.calculationlist__th-edit {
+.customerlist__th-edit {
   width: 150px;
 }
-.calculationlist__th-delete {
+.customerlist__th-delete {
   width: 150px;
 }
-.calculationlist__td-id {
+.customerlist__td-id {
   width: 50px;
 }
-.calculationlist__td-manager {
+.customerlist__td-manager {
   text-align: left;
 }
-.calculationlist__td-edit {
+.customerlist__td-edit {
   width: 150px;
 }
-.calculationlist__td-delete {
+.customerlist__td-delete {
   width: 150px;
 }
-.calculationlist__td-btn {
+.customerlist__td-btn {
   border: none;
   border-radius: 5px;
   padding: 5px;
   transition: background 0.3s, transform 0.1s;
 }
-.calculationlist__td-btn:hover {
+.customerlist__td-btn:hover {
   cursor: pointer;
 }
-.calculationlist__td-btn:active {
+.customerlist__td-btn:active {
   transform: scale(0.9);
 }
-.calculationlist__td-btn_yellow {
+.customerlist__td-btn_yellow {
   background: #C4C425;
 }
-.calculationlist__td-btn_yellow:hover {
+.customerlist__td-btn_yellow:hover {
   background: #E1E158;
 }
-.calculationlist__td-btn_red {
+.customerlist__td-btn_red {
   background: #C42525;
 }
-.calculationlist__td-btn_red:hover {
+.customerlist__td-btn_red:hover {
   background: #E15858;
 }
-.calculationlist__td-img {
+.customerlist__td-img {
   height: 20px;
   fill: #FFFFFF;
 }
-.calculationlist__tbody {
+.customerlist__tbody {
   display: block;
   height: calc(100vh - 185px);
   width: 100%;
@@ -122,4 +122,4 @@ tbody tr {
   width: 100%;
   display: table;
 }
-/*# sourceMappingURL=CalculationList.css.map */
+/*# sourceMappingURL=CustomerList.css.map */
