@@ -24,4 +24,37 @@
     color: @gray-dark;
     margin: 0;
   }
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+  }
+  &__item {
+    background: @gray-light;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+    &:hover {
+      transform: scale(0.97);
+      cursor: pointer;
+    }
+    &:active {
+      transform: scale(0.90);
+    }
+  }
+  &__item-img {
+    height: 50px;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  &__item-title {
+    margin: 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
 }
