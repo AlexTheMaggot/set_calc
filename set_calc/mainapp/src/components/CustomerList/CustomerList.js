@@ -8,6 +8,8 @@ export default function CustomerList(props) {
         "customers_uz": "Mijozlar",
         "add_ru": "Создать",
         "add_uz": "Yaratish",
+        "back_ru": "Назад в справочник",
+        "back_uz": "Ma'lumotga qaytish",
         "name_ru": "Имя (название компании)",
         "name_uz": "Ism (kompaniya nomi)",
         "edit_ru": "Редактировать",
@@ -29,7 +31,10 @@ export default function CustomerList(props) {
             <div className="customerlist__block">
                 <div className="customerlist__top">
                     <h1 className="customerlist__title">{text_content["customers_" + props.lang]}</h1>
-                    <button onClick={() => {props.open_calculation_modal(props.set_new_calculation_modal)}} className="customerlist__add-calculation">{text_content["add_" + props.lang]}</button>
+                    <div className="customerlist__top-right">
+                        <button onClick={() => {props.open_calculation_modal(props.set_new_calculation_modal)}} className="customerlist__btn customerlist__btn_green">{text_content["add_" + props.lang]}</button>
+                        <button onClick={(e) => {props.navi_content(e, "handbook_list")}} className="customerlist__btn customerlist__btn_blue">{text_content["back_" + props.lang]}</button>
+                    </div>
                 </div>
                 <div className="customerlist__data">
                     <table className="customerlist__table">
