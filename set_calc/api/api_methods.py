@@ -86,7 +86,8 @@ def profile_get(request, request_data):
 @auth_required
 def calculation_add(request, request_data):
     user = request.user
-    calculation = Calculation.objects.create(user=user)
+    customer = Customer.objects.get(name=request_data['params']['customer'])
+    calculation = Calculation.objects.create(user=user, customer=customer)
     calculation.save()
     return make_success(request_data['id'])
 
