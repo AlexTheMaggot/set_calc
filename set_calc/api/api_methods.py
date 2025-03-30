@@ -102,6 +102,10 @@ def calculation_get(request, request_data):
             'user': {
                 'id': calculation.user.id,
                 'username': calculation.user.username,
+            },
+            'customer': {
+                'id': calculation.customer.id,
+                'name': calculation.customer.name,
             }
         }
         result.append(item)
@@ -120,6 +124,9 @@ def calculation_update(request, request_data):
     if 'manager' in request_data['params'].keys():
         manager = User.objects.get(username=request_data['params']['manager'])
         calculation.user = manager
+    if 'customer' in request_data['params'].keys():
+        customer = Customer.objects.get(name=request_data['params']['customer'])
+        calculation.customer = customer
     calculation.save()
     return make_success(request_data['id'])
 
