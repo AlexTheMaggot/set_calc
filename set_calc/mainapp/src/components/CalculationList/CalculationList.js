@@ -10,6 +10,8 @@ export default function CalculationList(props) {
         "add_uz": "Yangi hisoblash",
         "manager_ru": "Менеджер",
         "manager_uz": "Menejer",
+        "customer_ru": "Клиент",
+        "customer_uz": "Mijoz",
         "edit_ru": "Редактировать",
         "edit_uz": "Tahrirlash",
         "delete_ru": "Удалить",
@@ -37,6 +39,7 @@ export default function CalculationList(props) {
                         <tr className="calculationlist__tr">
                             <th className="calculationlist__th calculationlist__th-id">ID</th>
                             <th className="calculationlist__th calculationlist__th-manager">{text_content['manager_' + props.lang]}</th>
+                            <th className="calculationlist__th calculationlist__th-manager">{text_content['customer_' + props.lang]}</th>
                             <th className="calculationlist__th calculationlist__th-edit">{text_content['edit_' + props.lang]}</th>
                             <th className="calculationlist__th calculationlist__th-delete">{text_content['delete_' + props.lang]}</th>
                         </tr>
@@ -46,6 +49,7 @@ export default function CalculationList(props) {
                             <tr key={calculation.id} className="calculationlist__tr">
                                 <td className="calculationlist__td calculationlist__td-id">{calculation.id}</td>
                                 <td className="calculationlist__td calculationlist__td-manager">{calculation.user.username}</td>
+                                <td className="calculationlist__td calculationlist__td-manager">{calculation.customer.name}</td>
                                 <td className="calculationlist__td calculationlist__td-edit">
                                     <button onClick={() => {props.open_modal(props.set_edit_calculation_modal, calculation)}} className="calculationlist__td-btn calculationlist__td-btn_yellow">
                                         <svg xmlns="http://www.w3.org/2000/svg"
