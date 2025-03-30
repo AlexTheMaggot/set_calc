@@ -17,7 +17,15 @@ export default function EditCalculation(props) {
         "cancel_uz": "Bekor qilish",
     }
     const edit_calculation = () => {
-        let r = api_sender('CalculationUpdate', 1, {id: props.calculation.id, manager: calculation_manager})
+        let r = api_sender(
+            'CalculationUpdate',
+            1,
+            {
+                id: props.calculation.id,
+                manager: calculation_manager,
+                customer: calculation_customer,
+            }
+        )
         r.then(() => {
             props.set_calculations_update(true)
             props.close_modal(props.set_edit_calculation_modal)
