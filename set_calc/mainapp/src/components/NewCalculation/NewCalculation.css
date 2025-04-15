@@ -51,4 +51,8 @@
 .newcalculation__btn_black:hover {
   background: #000000;
 }
+.newcalculation__input {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
 /*# sourceMappingURL=NewCalculation.css.map */
